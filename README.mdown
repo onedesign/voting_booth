@@ -1,0 +1,65 @@
+# VotingEngine
+
+## Installation
+
+Add this to your Gemfile:
+
+    gem 'voting_engine'
+
+and then run:
+
+    bundle install
+
+## Usage
+
+### Migrations
+
+Generate a migration for the votes table with:
+
+    rails generate voting_engine:votes
+
+Then, generate a migration for model you want to be votable, e.g.
+
+    rails generate voting_engine:votable BlogPost
+
+and then run these migrations with
+
+    rake db:migrate
+
+### Models
+
+For any model that can be voted on, add `votable`, e.g.:
+
+    # app/models/blog_post.rb
+    class BlogPost < ActiveRecord::Base
+      votable
+    end
+
+For the model that should act as the voter (typically User), add `voter`, e.g.:
+
+    # app/models/user.rb
+    class User < ActiveRecord::Base
+      voter
+    end
+
+### Views
+
+You can use the following helper methods in your views:
+
+    vote_for_path(@votable)
+    vote_against_path(@votable)
+
+where `@votable` is any object that has been marked as `votable`.
+
+## Configuration
+
+You can override VotingEngine's configuration by creating an initializer, e.g.
+
+    # config/initializers/voting_engine.rb
+    VotingEngine.positive_votes_only = true
+
+The options that can be overrridden are specified in lib/voting_engine.rb
+
+## Credits
+Copyright 2011 by [Dan Hodos](mailto:danhodos[at]gmail[dot]com), sponsored by [One Design Company](http://onedesigncompany.com/). This code is heavily based on [tally](https://github.com/theozaurus/tally). Released under the MIT License.
+
