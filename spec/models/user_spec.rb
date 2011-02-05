@@ -7,7 +7,7 @@ describe User do
 
   context "voting" do
     let(:votable) { mock_model(BlogPost) }
-    let(:vote) { mock_model(Vote) }
+    let(:vote) { mock_model(Vote, :for => true) }
     let(:vote_proxy) { mock('vote proxy') }
 
     before do
@@ -38,5 +38,45 @@ describe User do
 
       subject.remove_vote(votable)
     end
+
+    context "checking vote status" do
+      it "should find vote" do
+        vote_proxy.should_receive(:for_votable).with(votable).and_return([])
+        subject.vote_for_votable(votable).should be_nil
+      end
+
+      context "when already voted" do
+        before { subject.should_receive(:vote_for_votable).with(votable).and_return(vote) }
+
+        it "voted_on? should be true" do
+          subject.voted_on?(votable).should be_true
+        end
+
+        it "voted_for? should be true" do
+          subject.voted_for?(votable).should be_true
+        end
+
+        it "voted_against? should be true" do
+          subject.voted_against?(votable).should be_false
+        end
+      end
+
+      context "when not already voted" do
+        before { subject.should_receive(:vote_for_votable).with(votable).and_return(nil) }
+
+        it "voted_on? should be true" do
+          subject.voted_on?(votable).should be_false
+        end
+
+        it "voted_for? should be true" do
+          subject.voted_for?(votable).should be_false
+        end
+
+        it "voted_against? should be true" do
+          subject.voted_against?(votable).should be_false
+        end
+      end
+    end
+
   end
 end
