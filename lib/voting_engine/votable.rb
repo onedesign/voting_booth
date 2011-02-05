@@ -9,6 +9,8 @@ module VotingEngine
         has_many :votes, :as => :votable
         has_many :votes_for, :as => :votable, :conditions => {:for => true}, :class_name => "Vote"
         has_many :votes_against, :as => :votable, :conditions => {:for => false}, :class_name => "Vote"
+
+        scope :by_score, order("vote_score desc")
       end
     end # ClassMethods
 

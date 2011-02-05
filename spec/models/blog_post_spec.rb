@@ -35,4 +35,8 @@ describe BlogPost do
       subject.send(:vote_ci_lower_bound, 10, 20, 0.10).should be_within(0.001).of(0.327)
     end
   end
+
+  it "should order by_score by vote_score, highest first" do
+    subject.class.by_score.order_values.should == ["vote_score desc"]
+  end
 end
