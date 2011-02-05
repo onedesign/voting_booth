@@ -5,9 +5,7 @@ require 'rails/generators/active_record'
 module VotingEngine
   class VotableGenerator < Rails::Generator::NamedBase
     desc "Makes a specified model, e.g. BlogPost, votable."
-
     include Rails::Generators::Migration
-
     source_root File.expand_path('../templates', __FILE__)
 
     class << self

@@ -3,6 +3,8 @@ class Vote < ActiveRecord::Base
   belongs_to :votable, :polymorphic => true, :counter_cache => true
 
   validates_presence_of :votable, :voter
+  validates_inclusion_of :for, :in => [true, false], :message => "must be true or false"
+  validates_uniqueness_of :votable_id, :scope => [:votable_type, :voter_type, :voter_id]
 
   after_save :update_vote_score
   after_destroy :update_vote_score
