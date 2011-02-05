@@ -21,6 +21,10 @@ module VotingEngine
 
       def vote_for(votable); vote(votable, true); end
       def vote_against(votable); vote(votable, false); end
+
+      def remove_vote(votable)
+        votes.find_by_votable_type_and_votable_id(votable.class.to_s, votable.id).try(:destroy)
+      end
     end # VoterInstanceMethods
   end # Voter
 end # VotingEngine

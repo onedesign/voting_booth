@@ -10,9 +10,12 @@ describe User do
     let(:vote) { mock_model(Vote) }
     let(:vote_proxy) { mock('vote proxy') }
 
-    it "should create or update Vote" do
+    before do
       subject.id = 1
-      subject.should_receive(:votes).and_return(vote_proxy)
+      subject.stub(:votes => vote_proxy)
+    end
+
+    it "should create or update Vote" do
       vote_proxy.should_receive(:find_or_initialize_by_votable_type_and_votable_id).with("BlogPost", votable.id).and_return(vote)
       vote.should_receive(:update_attribute).with(:for, true)
 
@@ -27,6 +30,13 @@ describe User do
     it "should allow voting against" do
       subject.should_receive(:vote).with(votable, false)
       subject.vote_against(votable)
+    end
+
+    it "should allow removing a Vote" do
+      vote_proxy.should_receive(:find_by_votable_type_and_votable_id).with('BlogPost', votable.id).and_return(vote)
+      vote.should_receive(:destroy)
+
+      subject.remove_vote(votable)
     end
   end
 end
