@@ -1,0 +1,14 @@
+class Make<%= class_name %>Votable < ActiveRecord::Migration
+  def self.up
+    change_table :<%= table_name %> do |table|
+      table.integer :votes_count, :default => 0
+      table.float :vote_score, :default => 0.0
+    end
+  end
+
+  def self.down
+    change_table :<%= table_name %> do |table|
+      table.remove :votes_count, :vote_score
+    end
+  end
+end
