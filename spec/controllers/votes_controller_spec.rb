@@ -17,6 +17,13 @@ describe VotesController do
     it { should route(:delete, "/voting_engine/blog_post/1").to(:action => :destroy, :votable_type => 'blog_post', :votable_id => 1) }
   end
 
+  context "vote_for?" do
+    before { VotingEngine.should_receive(:positive_votes_only).and_return(true) }
+    it "should return true if positive_votes_only is set to true" do
+      subject.send(:vote_for?).should be_true
+    end
+  end
+
   context "when voter is not available" do
     before { subject.stub(:voter).and_return(nil) }
 

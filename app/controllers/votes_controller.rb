@@ -36,6 +36,7 @@ class VotesController < ApplicationController
   end
 
   def vote_for?
+    return true if VotingEngine.positive_votes_only
     'for' == params[:vote]
   end
 end
