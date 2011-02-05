@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Vote do
+  let(:votable) { mock_model(BlogPost) }
+  let(:voter) { mock_model(User) }
+  let(:vote) { mock_model(Vote) }
+
   it { should belong_to(:voter) }
   it { should belong_to(:votable) }
 
@@ -8,10 +12,6 @@ describe Vote do
   it { should validate_presence_of(:votable) }
 
   context "scopes" do
-    let(:votable) { mock_model(BlogPost) }
-    let(:voter) { mock_model(User) }
-    let(:vote) { mock_model(Vote) }
-
     it "should find for_votable" do
       where_hash = { :votable_type => 'BlogPost', :votable_id => votable.id }
       Vote.for_votable(votable).where_values_hash.should == where_hash
@@ -30,6 +30,23 @@ describe Vote do
 
     it "should only return a single item for_voter_and_votable" do
       Vote.for_voter_and_votable(voter, votable).limit_value.should == 1
+    end
+  end
+
+  context "update_vote_score" do
+    before do
+      subject.for = true
+      subject.votable = votable
+      subject.voter = voter
+      votable.should_receive(:update_vote_score)
+    end
+
+    it "should be called on save" do
+      subject.save
+    end
+
+    it "should be called on destroy" do
+      subject.destroy
     end
   end
 end

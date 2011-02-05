@@ -22,4 +22,17 @@ describe BlogPost do
       subject.voted_by?(voter).should be_false
     end
   end
+
+  context "update_vote_score" do
+    it "should update based on the lower bound of the confidence interval" do
+      subject.should_receive(:vote_ci_lower_bound).and_return(0.7)
+      subject.should_receive(:update_attribute).with(:vote_score, 0.7)
+      subject.update_vote_score
+    end
+
+    it "should determine confidence interval using math!" do
+      subject.send(:vote_ci_lower_bound, 20, 20, 0.10).should be_within(0.001).of(0.881)
+      subject.send(:vote_ci_lower_bound, 10, 20, 0.10).should be_within(0.001).of(0.327)
+    end
+  end
 end
