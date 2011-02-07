@@ -4,7 +4,6 @@ require 'rails/generators/active_record'
 
 module VotingBooth
   class VotesGenerator < Rails::Generator::Base
-    desc "Creates the Votes table. Only needs to be run once."
     include Rails::Generators::Migration
     source_root File.expand_path('../templates', __FILE__)
 
