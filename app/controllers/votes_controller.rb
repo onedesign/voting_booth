@@ -24,7 +24,7 @@ class VotesController < ApplicationController
   end
 
   def voter
-    @voter ||= instance_eval(&VotingEngine.find_voter_block)
+    @voter ||= instance_eval(&VotingBooth.find_voter_block)
   end
 
   def votable
@@ -36,7 +36,7 @@ class VotesController < ApplicationController
   end
 
   def vote_for?
-    return true if VotingEngine.positive_votes_only
+    return true if VotingBooth.positive_votes_only
     'for' == params[:vote]
   end
 end

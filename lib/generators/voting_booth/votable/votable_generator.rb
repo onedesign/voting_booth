@@ -2,7 +2,7 @@ require 'rails/generators'
 require 'rails/generators/migration'
 require 'rails/generators/active_record'
 
-module VotingEngine
+module VotingBooth
   class VotableGenerator < Rails::Generator::NamedBase
     desc "Makes a specified model, e.g. BlogPost, votable."
     include Rails::Generators::Migration
@@ -16,5 +16,5 @@ module VotingEngine
       migration_template "votable_migration.rb.erb", "db/migrate/make_#{plural_name}_votable.rb"
     end
   end # VotableGenerator
-end # VotingEngine
+end # VotingBooth
 

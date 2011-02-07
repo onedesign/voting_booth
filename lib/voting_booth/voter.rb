@@ -1,4 +1,4 @@
-module VotingEngine
+module VotingBooth
   module Voter
     extend ActiveSupport::Concern
 
@@ -44,6 +44,6 @@ module VotingEngine
 
     end # VoterInstanceMethods
   end # Voter
-end # VotingEngine
+end # VotingBooth
 
-ActiveRecord::Base.class_eval { include VotingEngine::Voter }
+ActiveRecord::Base.class_eval { include VotingBooth::Voter }

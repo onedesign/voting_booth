@@ -13,12 +13,12 @@ describe VotesController do
   let(:voter) { mock_model(User) }
 
   context "routing" do
-    it { should route(:post, "/voting_engine/blog_post/1").to(:action => :create, :votable_type => 'blog_post', :votable_id => 1) }
-    it { should route(:delete, "/voting_engine/blog_post/1").to(:action => :destroy, :votable_type => 'blog_post', :votable_id => 1) }
+    it { should route(:post, "/voting_booth/blog_post/1").to(:action => :create, :votable_type => 'blog_post', :votable_id => 1) }
+    it { should route(:delete, "/voting_booth/blog_post/1").to(:action => :destroy, :votable_type => 'blog_post', :votable_id => 1) }
   end
 
   context "vote_for?" do
-    before { VotingEngine.should_receive(:positive_votes_only).and_return(true) }
+    before { VotingBooth.should_receive(:positive_votes_only).and_return(true) }
     it "should return true if positive_votes_only is set to true" do
       subject.send(:vote_for?).should be_true
     end

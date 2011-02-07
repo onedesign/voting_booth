@@ -12,8 +12,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "voting_engine"
-  gem.homepage = "http://github.com/onedesign/voting_engine"
+  gem.name = "voting_booth"
+  gem.homepage = "http://github.com/onedesign/voting_booth"
   gem.license = "MIT"
   gem.summary = %Q{A Rails 3 Engine that provides voting functionality across multiple models.}
   gem.description = %Q{A Rails 3 Engine that provides voting functionality across multiple models.}
@@ -44,7 +44,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "voting_engine #{version}"
+  rdoc.title = "voting_booth #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

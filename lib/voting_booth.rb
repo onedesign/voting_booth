@@ -1,7 +1,7 @@
-module VotingEngine
-  require 'voting_engine/engine' if defined?(Rails)
-  require 'voting_engine/votable' if defined?(ActiveRecord)
-  require 'voting_engine/voter' if defined?(ActiveRecord)
+module VotingBooth
+  require 'voting_booth/engine' if defined?(Rails)
+  require 'voting_booth/votable' if defined?(ActiveRecord)
+  require 'voting_booth/voter' if defined?(ActiveRecord)
 
   # Specifies how the VotesController will try to find the voter. You may want
   # to override this if, for instance, you are using devise with an Admin model

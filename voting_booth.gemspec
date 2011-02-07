@@ -4,7 +4,7 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{voting_engine}
+  s.name = %q{voting_booth}
   s.version = "0.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "lib/voting_engine.rb",
+    "lib/voting_booth.rb",
     "spec/dummy/Rakefile",
     "spec/dummy/app/controllers/application_controller.rb",
     "spec/dummy/app/helpers/application_helper.rb",
@@ -60,10 +60,10 @@ Gem::Specification.new do |s|
     "spec/dummy/script/rails",
     "spec/integration/navigation_spec.rb",
     "spec/spec_helper.rb",
-    "spec/voting_engine_spec.rb",
-    "voting_engine.gemspec"
+    "spec/voting_booth_spec.rb",
+    "voting_booth.gemspec"
   ]
-  s.homepage = %q{http://github.com/onedesign/voting_engine}
+  s.homepage = %q{http://github.com/onedesign/voting_booth}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
@@ -85,7 +85,7 @@ Gem::Specification.new do |s|
     "spec/dummy/config/routes.rb",
     "spec/integration/navigation_spec.rb",
     "spec/spec_helper.rb",
-    "spec/voting_engine_spec.rb"
+    "spec/voting_booth_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

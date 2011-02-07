@@ -2,7 +2,7 @@ require 'rails/generators'
 require 'rails/generators/migration'
 require 'rails/generators/active_record'
 
-module VotingEngine
+module VotingBooth
   class VotesGenerator < Rails::Generator::Base
     desc "Creates the Votes table. Only needs to be run once."
     include Rails::Generators::Migration
@@ -16,4 +16,4 @@ module VotingEngine
       migration_template "votes_migration.rb", "db/migrate/create_votes.rb"
     end
   end # VotesGenerator
-end # VotingEngine
+end # VotingBooth
