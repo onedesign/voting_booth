@@ -1,3 +1,5 @@
+require 'rubystats'
+
 module VotingBooth
   require 'voting_booth/engine' if defined?(Rails)
   require 'voting_booth/votable' if defined?(ActiveRecord)
