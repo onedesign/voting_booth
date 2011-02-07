@@ -1,4 +1,4 @@
-# VotingEngine
+# VotingBooth
 
 ## Installation
 
@@ -53,10 +53,10 @@ where `@votable` is any object that has been marked as `votable`.
 
 ## Configuration
 
-You can override VotingEngine's configuration by creating an initializer, e.g.
+You can override VotingBooth's configuration by creating an initializer, e.g.
 
     # config/initializers/voting_booth.rb
-    VotingEngine.positive_votes_only = true
+    VotingBooth.positive_votes_only = true
 
 The options that can be overrridden are specified in lib/voting_booth.rb
 
