@@ -1,12 +1,9 @@
 source "http://rubygems.org"
+gemspec
 
 gem 'jeweler'
-
-gem "rails", "~> 3.0.3"
 gem "sqlite3-ruby", :require => "sqlite3"
-gem 'rubystats'
+gem 'ruby-debug'
 
 gem "rspec-rails", ">= 2.0.0.beta"
 gem "shoulda"
-
-gem 'ruby-debug'
