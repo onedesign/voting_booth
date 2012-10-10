@@ -9,7 +9,7 @@ module VotingBooth
   # to override this if, for instance, you are using devise with an Admin model
   # and namespace. Default: current_user
   mattr_accessor :find_voter_block
-  self.find_voter_block = lambda { current_user }
+  self.find_voter_block = Proc.new { current_user }
 
   # Specifies whether only allowing positive votes will be allowed. Useful if
   # you want to use this Engine as a favoriting/liking solution. Default:
